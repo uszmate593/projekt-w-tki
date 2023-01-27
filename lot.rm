@@ -1,0 +1,11 @@
+Koncept:
+    Samolot losuje czas przebywania w powietrzu, a po odczekaniu go zwiększa liczbę lądujących samolotów. Zajmuje mutex lądowiska. W przypadku gdy 
+    lotniskowiec jest pełny czeka na zmiennej warunkowej, a w przeciwnym wypadku ląduje zmiejszając ilość lądujących samolotów oraz zwiąkszając
+    liczbę samolotów na lotniskowcu a także zwalniając mutex. Wtedy wypuszczany jest sygnał do zmiennej warunkowej ustępujących pierwszeństwa
+    oraz samolot ponownie losuje czas i go odczekuje, a następnie przystępuje do startu. Ponownie zajmowany jest mutex lądowiska, a w przypadku 
+    kiedy na lotniskowcu jest mniej niż K samolotów oraz istnieją samoloty lądujące, samolot ten czeka na zmiennej warunkowej ustępując pierwszeństwa.
+    Po wystartowaniu zwalniany jest mutex oraz zmiejszana ilość samolotów na lotniskowcu, a także wysyłany sygnał do zmiennej warunkowej oczekujących
+    na miejsce na lotniskowcu.
+
+Uruchomienie:
+    Należy uruchomić plik lot.out powstały po wykonaniu skryptu make.sh
